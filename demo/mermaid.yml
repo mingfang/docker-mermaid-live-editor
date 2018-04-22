@@ -1,0 +1,17 @@
+namespaces:
+  {{namespace}}:
+    services:
+    - name: mermaid-demo
+      ports:
+      - {name: http, port: 8080}
+      annotations:
+        nginx:
+        - http:
+          - server: mermaid.{{namespace}}.*
+            paths:
+            - path: /
+      pod:
+        containers:
+        - name: mermaid
+          image: registry.rebelsoft.com/mermaid-live-editor:latest
+
